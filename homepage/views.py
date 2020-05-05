@@ -1,12 +1,12 @@
 from django.shortcuts import render
-from .models import Stock
+from .models import stock
 from django.core.paginator import Paginator
 from django.views.generic import ListView
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def homepage(request):
-    stock_list = Stock.objects.exclude(rank=int(0)).order_by('-rank')
+    stock_list = stock.objects.exclude(rank=int(0)).order_by('-rank')
     page = request.GET.get('page', 1)
     paginator = Paginator(stock_list, 40)
     try:

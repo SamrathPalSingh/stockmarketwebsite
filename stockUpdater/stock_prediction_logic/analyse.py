@@ -3,7 +3,7 @@ from .volume import volume
 from .macd import macd
 from .sr import sr
 from .candle import candle
-from homepage.models import Stock
+from homepage.models import stock
 import requests
 import threading
 import pandas as pd
@@ -23,7 +23,7 @@ def analyse(sym):
         json_object = r.json()['historical'][:226]
         json_object = s.json()['levels'][-1]
     except:
-        obj = Stock.objects.get(stockSymbol = sym)
+        obj = stock.objects.get(stockSymbol = sym)
         obj.s_and_r_trend = "n"
         obj.volume_trend='n'
         obj.macd_trend = "na"
@@ -48,7 +48,7 @@ def analyse(sym):
 
     sr_value = s.json()['levels'][-1]
 
-    obj = Stock.objects.get(stockSymbol = sym)
+    obj = stock.objects.get(stockSymbol = sym)
 
     # S&R
     arg = r.json()['historical'][0]
@@ -125,7 +125,7 @@ def analyse(sym):
 #####################   driver code  ###########################
 ################################################################
 def start_analysis():
-    symbols = [i.stockSymbol for i in Stock.objects.all()]
+    symbols = [i.stockSymbol for i in stock.objects.all()]
     for i in symbols:
         th.put(i)
     import datetime

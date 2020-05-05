@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Stock(models.Model):
+class stock(models.Model):
     stockName = models.CharField(max_length = 100)
     stockSymbol = models.CharField(max_length = 7)
 
