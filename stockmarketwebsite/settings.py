@@ -32,7 +32,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 # SECURE_HSTS_SECONDS = 3600
 # SECURE_HSTS_PRELOAD = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stockstechnicalanalysis.herokuapp.com', '127.0.0.1']
 
 
 INSTALLED_APPS = [
