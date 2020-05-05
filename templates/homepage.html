@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="NASDAQ stock investment ">    <!-- complete this -->
+  <meta name="author" content="Tintin">
+
+  <title>TechnicalAnalysis.com - Expand Your Investment Sphere</title>
+
+  <!-- Bootstrap core CSS -->
+  {% load static %}
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/heroic-features.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Stock Investment Technical Analysis</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://github.com/SamrathPalSingh/" target="_blank">About/Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4">
+      <h1 class="display-3">Welcome!</h1>
+      <p class="lead">StocksTechnicalAnalysis.com provides you with a list of best stocks to invest.</p>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+{% if stocks %}
+{% for i in stocks %}
+{% if i.candle_trend == 'be' %}
+<div class="col-lg-3 col-md-6 mb-4">
+<div class="card border-danger mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    <h4 class="card-title">{{ i.stockName }}</h4>
+    <p class="card-text">Symbol : {{ i.stockSymbol }}</p>
+  </div>
+  <!-- <div class="card-body">
+    <p class="card-text">Candle Analysis -  <br>Patern: {{ i.candle_pattern }} trend represented: {{ i.candle_trend }} </p>
+    <p class="card-text">S&R analysis - <br>Trend reversal detected: {{ i.s_and_r_trend }}</p>
+    <p class="card-text">Volume - <br>Volume traded: {{ i.volume }}, Exceptional Volume: {{ i.volume_trend }} </p>
+    <p class="card-text">MACD analysis - <br>Trend reversal detected: {{ i.macd_trend }}</p>
+  </div> -->
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+   <li class="list-group-item">
+       <p class="card-text">Candle Analysis -  <br>Pattern: {{ i.get_candle_pattern_display }} <br>trend represented: {{ i.get_candle_trend_display }} </p>
+   </li>
+   <li class="list-group-item">
+       <p class="card-text">S&R analysis - <br>Trend reversal detected: {{ i.get_s_and_r_trend_display }}</p>
+   </li>
+   <li class="list-group-item">
+     <p class="card-text">Volume - <br>Volume traded: {{ i.volume }}, <br>Exceptional Volume: {{ i.get_volume_trend_display }} </p>
+   </li>
+   <li class="list-group-item">
+     <p class="card-text">MACD analysis - <br>Trend reversal detected: {{ i.get_macd_trend_display }}</p>
+   </li>
+ </ul>
+  </div>
+  <div class="card-footer">
+    <p class="text-danger"> Suggested: Short Trade </p>
+    <a href="https://www.tradingview.com/symbols/NASDAQ-{{ i.stockSymbol }}/" class="btn btn-primary" target="_blank">Analyse this stock</a>
+  </div>
+</div>
+</div>
+{% else %}
+<div class="col-lg-3 col-md-6 mb-4">
+<div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header">
+    <h4 class="card-title">{{ i.stockName }}</h4>
+    <p class="card-text">Symbol : {{ i.stockSymbol }}</p>
+  </div>
+  <!-- <div class="card-body">
+    <p class="card-text">Candle Analysis -  <br>Patern: {{ i.candle_pattern }} trend represented: {{ i.candle_trend }} </p>
+    <p class="card-text">S&R analysis - <br>Trend reversal detected: {{ i.s_and_r_trend }}</p>
+    <p class="card-text">Volume - <br>Volume traded: {{ i.volume }}, Exceptional Volume: {{ i.volume_trend }} </p>
+    <p class="card-text">MACD analysis - <br>Trend reversal detected: {{ i.macd_trend }}</p>
+  </div> -->
+  <div class="card-body">
+  <ul class="list-group list-group-flush">
+   <li class="list-group-item">
+       <p class="card-text">Candle Analysis -  <br>Pattern: {{ i.get_candle_pattern_display }} <br>trend represented: {{ i.get_candle_trend_display }} </p>
+   </li>
+   <li class="list-group-item">
+       <p class="card-text">S&R analysis - <br>Trend reversal detected: {{ i.get_s_and_r_trend_display }}</p>
+   </li>
+   <li class="list-group-item">
+     <p class="card-text">Volume - <br>Volume traded: {{ i.volume }}, <br>Exceptional Volume: {{ i.get_volume_trend_display }} </p>
+   </li>
+   <li class="list-group-item">
+     <p class="card-text">MACD analysis - <br>Trend reversal detected: {{ i.get_macd_trend_display }}</p>
+   </li>
+ </ul>
+  </div>
+  <div class="card-footer">
+    <p class="text-success"> Suggested: Long Trade </p>
+    <a href="https://www.tradingview.com/symbols/NASDAQ-{{ i.stockSymbol }}/" class="btn btn-primary" target="_blank">Analyse this stock</a>
+  </div>
+</div>
+</div>
+{% endif %}
+      <!-- <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100"> -->
+          <!-- <img class="card-img-top" src="http://placehold.it/500x325" alt=""> -->
+          <!-- <div class="card-header">
+            <h4 class="card-title">{{ i.stockName }}</h4>
+            <p class="card-text">Symbol : {{ i.stockSymbol }}</p>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Candle Analysis -  <br>Patern: {{ i.candle_pattern }} trend represented: {{ i.candle_trend }} </p>
+            <p class="card-text">S&R analysis - <br>Trend reversal detected: {{ i.s_and_r_trend }}</p>
+            <p class="card-text">Volume - <br>Volume traded: {{ i.volume }}, Exceptional Volume: {{ i.volume_trend }} </p>
+            <p class="card-text">MACD analysis - <br>Trend reversal detected: {{ i.macd_trend }}</p>
+          </div>
+          <div class="card-footer">
+            <a href="https://www.tradingview.com/symbols/NASDAQ-{{ i.stockSymbol }}/" class="btn btn-primary" target="_blank">Analyse this stock</a>
+          </div>
+        </div>
+      </div> -->
+{% endfor %}
+<!-- {% else %} -->
+<!-- Jumbotron Header -->
+<!-- <header class="jumbotron my-4">
+  <h1 class="display-3">Welcome!</h1>
+  <p class="lead">Use the following cards to check for investment oppertunities</p>
+</header> -->
+
+{% endif %}
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+<nav>
+  <div class="container">
+    <p class="card-text">Page navigation</p>
+    <div class="row text-center">
+    <ul class="pagination">
+       {% if page_obj.has_previous %}
+         <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"><li class="page-link active">&laquo;</li></a>
+       {% else %}
+         <li class="page-link disabled"><span>&laquo;</span></li>
+       {% endif %}
+         <li class="page-link disable">{{ page_obj.number }}</li>
+       <!-- {% for i in stocks.paginator.page_range %}
+         {% if stocks.number == i %}
+           <li class="page-link active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+         {% else %}
+           <li class="page-link active"><a href="?page={{ i }}">{{ i }}</a></li>
+         {% endif %}
+       {% endfor %} -->
+       {% if stocks.has_next %}
+         <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"><li class="page-link active">&raquo;</li></a>
+       {% else %}
+         <li class="page-link disabled"><span>&raquo;</span></li>
+       {% endif %}
+     </ul>
+   </div>
+   </div>
+</nav>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; TechnicalAnalysis.com 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
