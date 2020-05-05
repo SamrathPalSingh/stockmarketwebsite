@@ -3,7 +3,7 @@ from .volume import volume
 from .macd import macd
 from .sr import sr
 from .candle import candle
-from homepage.models import stock
+from home.models import stock
 import requests
 import threading
 import pandas as pd

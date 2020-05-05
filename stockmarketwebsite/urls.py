@@ -20,11 +20,14 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+# urlpatterns += [
+# path('homepage/', include('homepage.urls'))
+# ]
 urlpatterns += [
-path('homepage/', include('homepage.urls'))
+path('home/', include('home.urls'))
 ]
 urlpatterns += [
-path('', RedirectView.as_view(url='homepage/', permanent=True))
+path('', RedirectView.as_view(url='home/', permanent=True))
 ]
 
 # add server staic files to

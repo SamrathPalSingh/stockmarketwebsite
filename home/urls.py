@@ -3,7 +3,7 @@ from . import views
 from django.views.generic import RedirectView
 
 urlpatterns = [
-path('', views.homepage, name = 'homepage')
+path('', views.home, name = 'home')
 ]
 
 # urlpatterns += [
