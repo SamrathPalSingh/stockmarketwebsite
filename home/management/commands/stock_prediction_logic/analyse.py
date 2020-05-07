@@ -170,7 +170,7 @@ def start_analysis():
 #####################   Test   code  ###########################
 ################################################################
 def test():
-    obj = stock.objects.get(stockSymbol = "AALP")
+    obj = stock.objects.get(stockSymbol = "AAPL")
     obj.s_and_r_trend = "n"
     obj.volume_trend='n'
     obj.macd_trend = "na"
