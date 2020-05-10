@@ -86,7 +86,7 @@
  </ul>
   </div>
   <div class="card-footer">
-    <p class="text-danger"> Suggested: Short Trade </p>
+    <p class="text-danger"> Suggested Trade: Short <br>Prediction Strength: {{ i.rank }}/4 </p>
     <a href="https://www.tradingview.com/symbols/NASDAQ-{{ i.stockSymbol }}/" class="btn btn-primary" target="_blank">Analyse this stock</a>
   </div>
 </div>
@@ -121,7 +121,7 @@
  </ul>
   </div>
   <div class="card-footer">
-    <p class="text-success"> Suggested: Long Trade </p>
+    <p class="text-success"> Suggested Trade: Long <br>Prediction Strength: {{ i.rank }}/4</p>
     <a href="https://www.tradingview.com/symbols/NASDAQ-{{ i.stockSymbol }}/" class="btn btn-primary" target="_blank">Analyse this stock</a>
   </div>
 </div>
@@ -161,27 +161,27 @@
   <!-- /.container -->
 <nav>
   <div class="container">
-    <p class="card-text">Page navigation</p>
+    <p class="card-text">Page navigation: </p>
     <div class="row text-center">
     <ul class="pagination">
-       {% if page_obj.has_previous %}
+       <!-- {% if page_obj.has_previous %}
          <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}"><li class="page-link active">&laquo;</li></a>
        {% else %}
          <li class="page-link disabled"><span>&laquo;</span></li>
        {% endif %}
-         <li class="page-link disable">{{ page_obj.number }}</li>
-       <!-- {% for i in stocks.paginator.page_range %}
+         <li class="page-link disable">{{ page_obj.number }}</li> -->
+       {% for i in stocks.paginator.page_range %}
          {% if stocks.number == i %}
            <li class="page-link active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
          {% else %}
            <li class="page-link active"><a href="?page={{ i }}">{{ i }}</a></li>
          {% endif %}
-       {% endfor %} -->
-       {% if stocks.has_next %}
+       {% endfor %}
+       <!-- {% if stocks.has_next %}
          <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"><li class="page-link active">&raquo;</li></a>
        {% else %}
          <li class="page-link disabled"><span>&raquo;</span></li>
-       {% endif %}
+       {% endif %} -->
      </ul>
    </div>
    </div>

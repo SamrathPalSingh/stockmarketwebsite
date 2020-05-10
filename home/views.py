@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def home(request):
     stock_list = stock.objects.exclude(rank=int(0)).order_by('-rank')
     page = request.GET.get('page', 1)
-    paginator = Paginator(stock_list, 40)
+    paginator = Paginator(stock_list, 25)
     try:
         stocks = paginator.page(page)
     except PageNotAnInteger:
