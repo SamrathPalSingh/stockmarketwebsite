@@ -174,7 +174,7 @@
          {% if stocks.number == i %}
            <li class="page-link active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
          {% else %}
-           <li class="page-link active"><a href="?page={{ i }}">{{ i }}</a></li>
+           <a href="?page={{ i }}"><li class="page-link active">{{ i }}</li></a>
          {% endif %}
        {% endfor %}
        <!-- {% if stocks.has_next %}
