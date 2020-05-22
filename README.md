@@ -1,2 +1,3 @@
 # stockmarketwebsite
-website
+Code for Django website
+link : stockstechnicalanalysis.herokuapp.com/
